@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St Elizabeth Medical Centre - Compassionate, Affordable Care in Nakuru</title>
+    <meta name="description" content="St Elizabeth Medical Centre: Your NHIF-accredited, faith-based private hospital in Nakuru. Offering compassionate, affordable care including Maternity, Outpatient, Lab, and Diagnostics.">
+    <meta name="keywords" content="Hospital in Nakuru, NHIF accredited, St Elizabeth Medical Centre, Maternity Nakuru, Affordable healthcare Kenya, Level 4 hospital">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Color Palette */
+            --primary-color: #008080; /* Teal/Medical Blue */
+            --secondary-color: #f8f8f8; /* Light Grey Background */
+            --accent-color: #90EE90; /* Soft Green Accent */
+            --text-color: #333333;
+            --white: #ffffff;
+            --danger-color: #d9534f;
+            
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Nunito', sans-serif;
+        }
+
+        /* Base Reset & Typography */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-color);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: 0.5em;
+            font-weight: 600;
+        }
+
+        h1 { font-size: 2.2rem; }
+        h2 { font-size: 1.8rem; }
+        h3 { font-size: 1.4rem; }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .section-padding {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bg-light-grey {
+            background-color: var(--secondary-color);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* === Navigation (Header) === */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: none; /* Hidden on mobile by default */
+            flex-direction: column;
+            position: absolute;
+            top: 65px;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-menu a:hover {
+            background-color: #006666; /* Darker Teal */
+            text-decoration: none;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+            display: block; /* Visible on mobile */
+        }
+
+        /* Desktop Navigation */
+        @media (min-width: 992px) {
+            .nav-menu {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                width: auto;
+                background: none;
+                box-shadow: none;
+            }
+            .nav-menu a {
+                color: var(--text-color);
+                padding: 0 15px;
+                border-bottom: none;
+                transition: color 0.3s;
+            }
+            .nav-menu a:hover {
+                color: var(--primary-color);
+                background: none;
+            }
+            .nav-menu .nav-cta {
+                background-color: var(--primary-color);
+                color: var(--white);
+                padding: 8px 15px;
+                border-radius: 20px;
+                margin-left: 15px;
+            }
+            .nav-menu .nav-cta:hover {
+                background-color: var(--accent-color);
+                color: var(--primary-color);
+            }
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        /* === CTA Buttons & Forms === */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .cta-button.primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .cta-button.primary:hover {
+            background-color: #005f5f; /* Darker Teal */
+            text-decoration: none;
+        }
+
+        .cta-button.secondary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Forms */
+        input[type="text"], input[type="tel"], input[type="email"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 1em;
+        }
+
+        fieldset {
+            border: 1px solid var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: var(--primary-color);
+            padding: 0 10px;
+        }
+
+        .confirmation-box {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+            border: 2px solid var(--primary-color);
+        }
+
+        /* === Homepage Sections Specific Styling === */
+        /* Hero */
+        .hero-section {
+            background: url('https://images.unsplash.com/photo-1628122971276-880624b455b9') center/cover no-repeat;
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .slogan {
+            font-size: 1.3rem;
+            margin: 15px 0 30px;
+        }
+
+        /* Highlight Bar */
+        .highlight-bar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 20px;
+        }
+
+        .highlight-bar .container-small {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .highlight-bar a {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Cards Grid */
+        .service-cards-grid {
+            display: grid;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--accent-color);
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card .icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Testimonial */
+        .testimonial-box {
+            background-color: var(--accent-color);
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            border-left: 5px solid var(--primary-color);
+        }
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* === Utility & Specific Layouts === */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: var(--white);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Grid Layouts */
+        .contact-grid, .mission-vision-grid, .features-list ul, .patients-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .map-embed-placeholder {
+            height: 300px;
+            width: 100%;
+            background-color: var(--secondary-color);
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            border-radius: 8px;
+        }
+
+        /* Service Detail Grid (4 columns on desktop) */
+        .service-detail-grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .service-item {
+            padding: 20px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        .service-item h3 {
+             color: var(--text-color);
+        }
+        .service-item:hover {
+             background-color: var(--secondary-color);
+             border-radius: 8px;
+        }
+        
+        /* Team Grid (Doctors Page) */
+        .team-grid {
+            display: grid;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .team-member {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .team-member img {
+            width: 100%;
+            max-width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 3px solid var(--accent-color);
+        }
+        .team-member h4 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        .team-member p {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        /* Patients & Billing */
+        .patients-grid {
+            grid-template-columns: 1fr;
+        }
+        .patients-grid h3 {
+            color: var(--text-color);
+        }
+
+        /* === Footer === */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 20px 10px;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 20px;
+        }
+
+        .main-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .main-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Desktop/Tablet Media Queries */
+        @media (min-width: 600px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            
+            .highlight-bar .container-small {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            .service-cards-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-grid, .mission-vision-grid, .patients-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .service-detail-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1.5fr 1fr 1.5fr;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .service-cards-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .service-detail-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .team-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <a href="#home" class="logo">St Elizabeth Medical Centre</a>
+        <nav class="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#doctors">Doctors & Staff</a>
+            <a href="#appointment" class="nav-cta">Appointments</a>
+            <a href="#patients">Patients & Billing</a>
+            <a href="#contact">Contact</a>
+            <a href="#news">News</a>
+        </nav>
+        <button class="menu-toggle">☰</button>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1 class="h1-large">St Elizabeth Medical Centre, Nakuru</h1>
+                <p class="slogan">“Compassionate, Affordable Care in Nakuru”</p>
+                <a href="#appointment" class="cta-button primary">Book Your Appointment Now</a>
+            </div>
+        </section>
+
+        <section class="highlight-bar">
+            <div class="container-small">
+                <div class="accreditation">
+                    <p><i class="fas fa-certificate"></i> NHIF Accredited Level 4 Private Hospital (Code: 0019885s)</p>
+                </div>
+                <div class="emergency">
+                    <p><i class="fas fa-phone-alt"></i> 🚨 24/7 Emergency: <a href="tel:0512212153">051 2212153</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <h2 class="text-center">Our Core Services</h2>
+            <p class="section-description text-center">We offer a wide range of medical services designed to meet the needs of every family member, right here in Nakuru.</p>
+            <div class="service-cards-grid">
+                <div class="card">
+                    <span class="icon">👶</span>
+                    <h3>Maternity Care</h3>
+                    <p>Safe, compassionate antenatal care and delivery services supported by our dedicated team.</p>
+                </div>
+                <div class="card">
+                    <span class="icon">🩺</span>
+                    <h3>Outpatient Consultation</h3>
+                    <p>Daily doctor consultations, routine check-ups, and treatment for acute illnesses.</p>
+                </div>
+                <div class="card">
+                    <span class="icon">🔬</span>
+                    <h3>Lab & Diagnostics</h3>
+                    <p>Accurate and timely lab tests, ultrasound, and diagnostic services available 24 hours.</p>
+                </div>
+                <div class="card">
+                    <span class="icon">💊</span>
+                    <h3>24/7 Pharmacy</h3>
+                    <p>Fully stocked pharmacy with certified medication and professional advice.</p>
+                </div>
+            </div>
+            <div class="text-center mt-30"><a href="#services" class="cta-button secondary">View All Services</a></div>
+        </section>
+
+        <section class="section-padding bg-light-grey">
+            <h2 class="text-center">Trusted Care in the Heart of Nakuru</h2>
+            <div class="features-list">
+                <ul>
+                    <li><i class="fas fa-cross"></i> Faith-Based Values: Care delivered with compassion, integrity, and respect for all patients.</li>
+                    <li><i class="fas fa-wallet"></i> Affordable & Comprehensive: High-quality services accessible to the whole community.</li>
+                    <li><i class="fas fa-hands-helping"></i> NHIF & Insurance: Accredited and partnered with major insurance providers for seamless billing.</li>
+                    <li><i class="fas fa-user-md"></i> Trained Staff: Highly competent medical professionals dedicated to your healing journey.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="testimonial-box">
+                <p class="quote"><i class="fas fa-quote-left"></i> The care I received at St Elizabeth Maternity was exceptional and affordable. The nurses treated me like family. Highly recommend! <i class="fas fa-quote-right"></i></p>
+                <p class="source">- Jane W., Nakuru Resident</p>
+            </div>
+        </section>
+
+        ---
+
+        <section id="about" class="section-padding">
+            <h1>Our Story of Care: Serving Nakuru with Compassion</h1>
+            <p class="lead-text">St Elizabeth Medical Centre is a Level 4 private, faith-based hospital established to meet the urgent need for accessible, high-quality, and ethical healthcare in Nakuru County.</p>
+
+            <div class="mission-vision-grid">
+                <div>
+                    <h3><i class="fas fa-crosshairs"></i> Mission</h3>
+                    <p>To provide high-quality, compassionate, and affordable healthcare services guided by Christian values, meeting the holistic needs of the Nakuru community.</p>
+                </div>
+                <div>
+                    <h3><i class="fas fa-eye"></i> Vision</h3>
+                    <p>To be the most trusted and preferred Level 4 faith-based hospital in the Rift Valley region, recognized for excellence in patient care and service.</p>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 30px;">Our Core Values</h3>
+            <ul>
+                <li>**Compassion, Integrity, Excellence, Accessibility, Faith.**</li>
+            </ul>
+        </section>
+
+        ---
+
+        <section id="services" class="section-padding bg-light-grey">
+            <h1>Comprehensive Healthcare Services for the Whole Family</h1>
+            <p class="lead-text">We are equipped to handle your family's health needs from prevention and routine care to diagnostics and treatment.</p>
+
+            <div class="service-detail-grid">
+                <div class="service-item">
+                    <span class="service-icon"><i class="fas fa-stethoscope"></i></span>
+                    <h3>General Medicine</h3>
+                    <p>Diagnosis and treatment of acute and chronic illnesses, routine check-ups, and managing non-communicable diseases.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon"><i class="fas fa-baby"></i></span>
+                    <h3>Maternity and Antenatal Care</h3>
+                    <p>Safe delivery services, specialized antenatal clinics, postnatal care, and comprehensive family planning services.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon"><i class="fas fa-user-friends"></i></span>
+                    <h3>Outpatient and Consultation</h3>
+                    <p>Walk-in consultations, follow-up appointments, wound dressing, and minor injury care available 24 hours.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon"><i class="fas fa-flask"></i></span>
+                    <h3>Laboratory and Diagnostic Services</h3>
+                    <p>State-of-the-art laboratory testing, X-ray, and Ultrasound services for accurate and rapid diagnosis.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon"><i class="fas fa-hand-holding-medical"></i></span>
+                    <h3>Minor Surgery</h3>
+                    <p>Safe and sterile environment for minor surgical procedures and day-case operations, handled by experienced surgeons.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon"><i class="fas fa-syringe"></i></span>
+                    <h3>Child Immunization & Family Health</h3>
+                    <p>Adherence to the KEPI immunization schedule, children's wellness clinics, and general family health maintenance.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon"><i class="fas fa-heartbeat"></i></span>
+                    <h3>Preventive Health Programs</h3>
+                    <p>Screening packages, health education, diet and lifestyle counseling to help you stay healthy and avoid illness.</p>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon"><i class="fas fa-prescription-bottle-alt"></i></span>
+                    <h3>24/7 Pharmacy Services</h3>
+                    <p>Access to a wide range of quality, certified medicines around the clock with guidance from our pharmacists.</p>
+                </div>
+            </div>
+        </section>
+        
+        ---
+
+        <section id="doctors" class="section-padding">
+            <h1>Meet Our Dedicated Doctors & Staff</h1>
+            <p class="lead-text">Our team is composed of highly qualified, compassionate medical professionals dedicated to providing personalized care guided by integrity and faith.</p>
+            
+            <h2 style="margin-top: 30px;">Key Medical Personnel</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1621422791854-c9c4b7b686c1" alt="Dr. Mary Kariuki">
+                    <h4>Dr. Mary Kariuki (MD)</h4>
+                    <p>Chief Medical Officer & General Practitioner</p>
+                    <p>Specializes in family health and chronic disease management.</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1628348068343-255d496a0110" alt="Dr. John Ochieng">
+                    <h4>Dr. John Ochieng (MBChB)</h4>
+                    <p>Obstetrics & Gynecology (Visiting Specialist)</p>
+                    <p>Available for high-risk maternity consultations and women's health clinics.</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab936" alt="Nurse Esther Wanjiku">
+                    <h4>Nurse Esther Wanjiku</h4>
+                    <p>Head of Nursing & Maternity Ward</p>
+                    <p>Over 15 years of experience in patient care and pediatric health.</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1594824476967-46369d2d8892" alt="Mr. David Kiprop">
+                    <h4>Mr. David Kiprop</h4>
+                    <p>Chief Laboratory Technologist</p>
+                    <p>Ensures accuracy and quick turnaround for all diagnostic services.</p>
+                </div>
+            </div>
+            <p class="text-center" style="margin-top: 30px; font-style: italic;">We host visiting specialists weekly. Please contact us to check the schedule for specific consultants.</p>
+        </section>
+
+        ---
+
+        <section id="appointment" class="section-padding bg-light-grey">
+            <h1 class="text-center">Book Your Consultation at St Elizabeth</h1>
+            <p class="lead-text text-center">Please fill out the form below. Our patient liaison team will contact you shortly to confirm your preferred time and date.</p>
+
+            <div class="appointment-form-container" style="max-width: 600px; margin: 0 auto;">
+                <form action="#" method="POST" id="appointment-form">
+                    <fieldset>
+                        <legend>Patient Details</legend>
+                        <label for="name">Full Name </label>
+                        <input type="text" id="name" name="name" required aria-required="true">
+
+                        <label for="phone">Phone Number </label>
+                        <input type="tel" id="phone" name="phone" required aria-required="true">
+
+                        <label for="email">Email (Optional)</label>
+                        <input type="email" id="email" name="email">
+
+                        <label for="nhif">NHIF Number (Optional)</label>
+                        <input type="text" id="nhif" name="nhif" placeholder="0019885">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Appointment Details</legend>
+                        <label for="date">Preferred Date *</label>
+                        <input type="date" id="date" name="date" required aria-required="true">
+
+                        <label for="service">Required Service </label>
+                        <select id="service" name="service" required aria-required="true">
+                            <option value="">-- Select Service --</option>
+                            <option value="General Medicine">General Medicine</option>
+                            <option value="Maternity Care">Maternity and Antenatal Care</option>
+                            <option value="Outpatient">Outpatient Consultation</option>
+                            <option value="Diagnostic">Lab & Diagnostic Services</option>
+                            <option value="Other">Other Inquiry</option>
+                        </select>
+
+                        <label for="message">Reason for Visit / Message</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </fieldset>
+
+                    <button type="submit" class="cta-button primary" style="width: 100%;">Book Appointment</button>
+                </form>
+                <p class="privacy-note text-center" style="font-size: 0.9em; margin-top: 15px;">Your information is kept confidential. Required fields are marked with (*).</p>
+            </div>
+
+            <div id="confirmation-message" style="display:none; max-width: 600px; margin: 30px auto;" class="confirmation-box">
+                <h2>✅ Booking Received!</h2>
+                <p>Thank you for reaching out to St Elizabeth Medical Centre. Our team will contact you shortly on your provided phone number to confirm your appointment details.</p>
+            </div>
+        </section>
+
+        ---
+
+        <section id="patients" class="section-padding">
+            <h1>Patients & Billing Information</h1>
+            <p class="lead-text">We strive to make your hospital experience seamless and worry-free by working with major insurance partners and providing transparent billing.</p>
+
+            <div class="patients-grid">
+                <div>
+                    <h2>NHIF & Insurance Partners</h2>
+                    <p>We are a fully NHIF accredited (Code: 0019885) Level 4 Private Hospital. You can comfortably use your NHIF card for various services, including inpatient care, maternity, and outpatient packages.</p>
+                    <p>We also partner with a growing list of reputable private insurance providers. Please call us ahead of your visit to confirm your specific coverage.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> NHIF Accepted</li>
+                        <li><i class="fas fa-check-circle"></i> Madison Insurance (Placeholder)</li>
+                        <li><i class="fas fa-check-circle"></i> Jubilee Health (Placeholder)</li>
+                        <li><i class="fas fa-check-circle"></i> UAP Old Mutual (Placeholder)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Accepted Payment Methods</h2>
+                    <p>We accept a variety of payment methods for co-pays, excesses, and self-pay services:</p>
+                    <ul>
+                        <li><i class="fas fa-money-bill-wave"></i> Cash Payment</li>
+                        <li><i class="fas fa-credit-card"></i> Debit/Credit Cards (Visa/MasterCard)</li>
+                        <li><i class="fas fa-mobile-alt"></i> Mobile Money (M-Pesa/Airtel Money)</li>
+                        <li><i class="fas fa-chart-line"></i> NHIF & Approved Insurance Scheme Cards</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 20px;">Patient Rights & Privacy</h3>
+                    <p>Your privacy and comfort are our priority. We adhere strictly to patient confidentiality laws. You have the right to transparent information regarding your treatment and costs. Full details available at the administration desk.</p>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <section id="contact" class="section-padding bg-light-grey">
+            <h1 class="text-center">Get in Touch with St Elizabeth Medical Centre</h1>
+            <p class="lead-text text-center">We are here to help 24 hours a day, 7 days a week. Visit us at our Nakuru location.</p>
+
+            <div class="contact-grid">
+                <div class="contact-details">
+                    <h2>Our Contact Information</h2>
+                    <p><i class="fas fa-map-marker-alt"></i> Location: Turkana Road, Off Kanu Street, Nakuru, Kenya</p>
+                    <p><i class="fas fa-phone-alt"></i> Phone (General): <a href="tel:0512212153">051 2212153</a></p>
+                    <p><i class="fas fa-exclamation-triangle"></i> Emergency Line: <a href="tel:0512212153" class="text-danger">051 2212153</a></p>
+                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@stelizabethnakuru.co.ke">info@stelizabethnakuru.co.ke</a></p>
+                    <p><i class="fas fa-mail-bulk"></i> Postal: P.O. Box 2922, Nakuru 20100</p>
+                    
+                    <h3 style="margin-top: 20px;"><i class="far fa-clock"></i> Working Hours</h3>
+                    <p>Outpatient Services: 24 Hours, 7 Days a Week</p>
+                    <p>Admin Office:Monday - Friday: 8:00 AM - 5:00 PM</p>
+                    
+                    <a href="https://wa.me/254112308046" class="cta-button primary" target="_blank" style="margin-top: 20px;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+
+                <div class="map-location">
+                    <h2>Find Us in Nakuru</h2>
+                    <div class="map-embed-placeholder">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.308291500361!2d36.0718524147748!3d-0.3013239996155099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182bb6231d68d189%3A0xc3f5c78a05151528!2sSt%20Elizabeth%20Hospital%20Nakuru!5e0!3m2!1sen!2ske!4v1638200000000!5m2!1sen!2ske" width="100%" height="100%" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <section id="news" class="section-padding">
+            <h1 class="text-center">News & Announcements</h1>
+            <p class="lead-text text-center">Stay updated with our latest health tips, community outreach programs, and hospital news.</p>
+
+            <div class="service-cards-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: 30px auto;">
+                <div class="card">
+                    <h3><i class="fas fa-bullhorn"></i> Free Child Immunization Drive (Dec 2025)</h3>
+                    <p>We are hosting a free vaccination clinic next month in partnership with the Nakuru County Health Department. Visit our Outpatient department for details.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-heart"></i> Health Tip: Managing Diabetes Through Diet</h3>
+                    <p>Our nutrition expert shares essential advice on maintaining blood sugar levels using locally available foods...</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-award"></i> Hospital Achieves ISO Certification</h3>
+                    <p>We are proud to announce that St Elizabeth Medical Centre has achieved ISO 9001 certification for quality management in healthcare services.</p>
+                </div>
+            </div>
+            <p class="text-center" style="margin-top: 20px;"><a href="#contact">Have an idea for a community initiative? Let us know!</a></p>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <h3>St Elizabeth Medical Centre</h3>
+                <p>"Compassionate, Affordable Care in Nakuru"</p>
+                <p>NHIF Code: 0019885</p>
+                <p>Location: Turkana Road, Nakuru</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">All Services</a></li>
+                    <li><a href="#patients">Patients & Billing</a></li>
+                    <li><a href="#news">News & Announcements</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Phone: <a href="tel:0512212153">051 2212153</a></p>
+                <p>Email: <a href="mailto:info@stelizabethnakuru.co.ke">info@stelizabethnakuru.co.ke</a></p>
+                <p><a href="#contact">View Map & Directions</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 St Elizabeth Medical Centre – Nakuru | All Rights Reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Patient Rights</a></p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/254112308046" target="_blank" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Menu Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+                
+                // Close menu when a link is clicked (useful for single-page nav)
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                        }
+                    });
+                });
+            }
+
+            // 2. Appointment Form Submission Logic (Placeholder)
+            const appointmentForm = document.getElementById('appointment-form');
+            const confirmationMessage = document.getElementById('confirmation-message');
+
+            if (appointmentForm && confirmationMessage) {
+                appointmentForm.addEventListener('submit', (e) => {
+                    e.preventDefault(); 
+
+                    // Simple client-side validation check
+                    const requiredInputs = appointmentForm.querySelectorAll('[required]');
+                    let allValid = true;
+                    requiredInputs.forEach(input => {
+                        if (!input.value) {
+                            allValid = false;
+                        }
+                    });
+
+                    if (allValid) {
+                        // In a real deployment, a fetch() request would send data to a backend.
+                        
+                        // --- Placeholder Simulation ---
+                        appointmentForm.reset(); 
+                        appointmentForm.style.display = 'none'; 
+                        confirmationMessage.style.display = 'block'; 
+                        
+                        // Scroll to the confirmation message for visibility
+                        confirmationMessage.scrollIntoView({ behavior: 'smooth' });
+
+                        // Optional: Hide confirmation after 8 seconds
+                        setTimeout(() => {
+                            confirmationMessage.style.display = 'none';
+                            appointmentForm.style.display = 'block';
+                        }, 8000); 
+                        // --- End Placeholder Simulation ---
+                        
+                    } else {
+                        alert("Please fill out all required fields marked with (*).");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
